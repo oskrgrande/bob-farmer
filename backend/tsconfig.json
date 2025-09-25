@@ -1,0 +1,83 @@
+{
+  "files": [
+    "src/index.ts",
+  ],
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "incremental": true,
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ESNext"
+    ],
+    "module": "preserve",
+    "skipLibCheck": true,
+    "removeComments": true,
+    "outDir": "dist",
+    "useUnknownInCatchVariables": true,
+    "allowJs": true,
+    "checkJs": false,
+    /* Bundler mode */
+    "moduleDetection": "force",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    /* Experimental Options */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    /* Linting */
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@errors": [
+        "src/errors/index.ts"
+      ],
+      "@constants": [
+        "src/constants/index.ts"
+      ],
+      "@locales": [
+        "src/locales/index.ts"
+      ],
+      "@types": [
+        "src/types/index.ts"
+      ],
+      "@corn": [
+        "src/modules/corn/index.ts"
+      ],
+      "@utils": [
+        "src/utils/index.ts"
+      ],
+      "@middlewares": [
+        "src/middlewares/index.ts"
+      ],
+      "@modules": [
+        "src/modules/index.ts"
+      ],
+      "@api": [
+        "src/api/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "prisma/**/*",
+    ".husky/install.js",
+    "*.config.js",
+    "*.config.ts"
+  ],
+  "exclude": [
+    "node_modules/",
+    "build/",
+    "dist/",
+    ".cache/",
+    ".tmp/"
+  ]
+}
