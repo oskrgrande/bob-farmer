@@ -26,7 +26,6 @@ const PurchaseComponent: React.FC<PurchaseProps> = ({ subtotal, shipping, tax, i
         try {
             const toastId = toast.loading('Confirming purchase...')
             const response = await mutateAsync()
-            console.log("🚀 ~ onSubmit ~ response:", response)
             toast.dismiss(toastId)
             if (response?.status === 204) {
                 toast.success('Purchase confirmed successfully!')
