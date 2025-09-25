@@ -1,14 +1,12 @@
-import { purchase } from '@/api/corn/index.ts'
-import { queryClient } from '@/constants/tanstack.js'
+import { axiosInstance } from "@/constants/axios";
 import { useMutation } from '@tanstack/react-query'
-
 
 export const usePurchase = () => {
   return useMutation({
-    mutationFn: (data: FormData) => purchase(data),
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['documents'] })
-      return data
+    mutationFn: async () => {
+      const response = await axiosInstance.post('/corn')
+      console.log("🚀 ~ usePurchase ~ response:", response)
+      return response
     },
   })
 }

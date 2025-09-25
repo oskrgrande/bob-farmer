@@ -1,4 +1,7 @@
 import React from 'react';
+import { usePurchase } from '@/hooks/corn';
+import { toast } from 'sonner'
+import axios from 'axios'
 
 interface PurchaseProps {
     subtotal: number,
@@ -16,20 +19,43 @@ interface OrderItem {
 
 const PurchaseComponent: React.FC<PurchaseProps> = ({ subtotal, shipping, tax, items }) => {
 
+    const { mutateAsync } = usePurchase()
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
 
+        try {
+            const toastId = toast.loading('Confirming purchase...')
+            const response = await mutateAsync()
+            console.log("🚀 ~ onSubmit ~ response:", response)
+            toast.dismiss(toastId)
+            if (response?.status === 204) {
+                toast.success('Purchase confirmed successfully!')
+            }
+        } catch (error) {
+            toast.dismiss()
+            if (axios.isAxiosError(error)) {
+                const statusCode = error.response?.status
+                if (statusCode === 429) {
+                    toast.error('Too many requests. Please try again later.')
+                } else {
+                    toast.error(`Something went wrong (${statusCode || 'unknown error'})`)
+                }
+            }
+        }
+    }
     return (
         <div className="w-full p-4 pt-8">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
+            <div className=" mx-auto flex flex-col lg:flex-row gap-8">
                 <div className="lg:w-7/12 bg-white text-[#464646]">
                     <h1 className="text-2xl font-bold mb-4">Payment</h1>
                     <p className=" mb-6">All transactions are secure and encrypted.</p>
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={onSubmit}>
                         <div className="space-y-4">
                             <label className="block">
                                 <span className="">Card number</span>
                                 <input
                                     type="text"
-                                    className="mt-1 block w-full rounded-md focus:outline-none  "
+                                    className="mt-1 block bg-[#E8E8E8] px-4 py-3 w-full rounded-md focus:outline-none  "
                                     placeholder="1234 1234 1234 1234"
                                 />
                             </label>
@@ -39,7 +65,7 @@ const PurchaseComponent: React.FC<PurchaseProps> = ({ subtotal, shipping, tax, i
                                     <span className="">Name on card</span>
                                     <input
                                         type="text"
-                                        className="mt-1 block w-full rounded-md ring-0 focus:outline-none  "
+                                        className="mt-1 block  bg-[#E8E8E8] px-4 py-3 w-full rounded-md ring-0 focus:outline-none  "
                                         placeholder="Card name"
                                     />
                                 </label>
@@ -47,7 +73,7 @@ const PurchaseComponent: React.FC<PurchaseProps> = ({ subtotal, shipping, tax, i
                                     <span className="">Expire date</span>
                                     <input
                                         type="text"
-                                        className="mt-1 block w-full rounded-md ring-0 focus:outline-none  "
+                                        className="mt-1 block  bg-[#E8E8E8] px-4 py-3 w-full rounded-md ring-0 focus:outline-none  "
                                         placeholder="MM/YY"
                                     />
                                 </label>
@@ -55,7 +81,7 @@ const PurchaseComponent: React.FC<PurchaseProps> = ({ subtotal, shipping, tax, i
                                     <span className="">Security code</span>
                                     <input
                                         type="text"
-                                        className="mt-1 block w-full rounded-md ring-0 focus:outline-none  "
+                                        className="mt-1 block  bg-[#E8E8E8] px-4 py-3 w-full rounded-md ring-0 focus:outline-none  "
                                         placeholder="CVV"
                                     />
                                 </label>

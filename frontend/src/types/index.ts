@@ -1,4 +1,3 @@
-export * from './models/index.js'
 export * from './error.js'
 
 export type Entries<T> = {
