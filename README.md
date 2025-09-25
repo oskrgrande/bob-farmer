@@ -11,7 +11,7 @@ Ambos usan **pnpm** como manejador de paquetes.
 
 ---
 
-## 🚀 Requisitos previos
+## Requisitos previos
 
 - [Node.js](https://nodejs.org/) (>= 18)
 - [pnpm](https://pnpm.io/)
@@ -24,7 +24,7 @@ npm install -g pnpm
 
 ---
 
-## 📥 Clonar el repositorio
+##  Clonar el repositorio
 
 ```bash
 git clone https://github.com/tu-usuario/tu-repo.git
@@ -33,7 +33,7 @@ cd tu-repo
 
 ---
 
-## ⚙️ Backend (Node.js + TypeScript)
+##  Backend (Node.js + TypeScript)
 
 ### 1. Ir a la carpeta del backend
 
@@ -69,7 +69,7 @@ pnpm start
 
 ---
 
-## 💻 Frontend (React + Vite)
+## Frontend (React + Vite)
 
 ### 1. Ir a la carpeta del frontend
 
@@ -103,7 +103,7 @@ pnpm preview
 
 ---
 
-## 📜 Scripts útiles
+## Scripts útiles
 
 ### Backend
 
@@ -119,24 +119,113 @@ pnpm preview
 
 ---
 
-## 📂 Estructura del repositorio
+##  Estructura del repositorio
 
 ```
 .
-├── backend/   # Proyecto Node.js + TS
-│   ├── src/
-│   ├── package.json
-│   └── ...
-├── frontend/  # Proyecto React + Vite
-│   ├── src/
-│   ├── package.json
-│   └── ...
-└── README.md
+├── README.md
+├── backend
+│   ├── commitlint.config.ts
+│   ├── eslint.config.js
+│   ├── lint-staged.config.js
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── src
+│   │   ├── app.ts
+│   │   ├── constants
+│   │   │   ├── enviroment.ts
+│   │   │   ├── error.ts
+│   │   │   ├── http.ts
+│   │   │   └── index.ts
+│   │   ├── env.d.ts
+│   │   ├── errors
+│   │   │   ├── base.error.ts
+│   │   │   ├── custom-errors.ts
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   ├── locales
+│   │   │   ├── es.ts
+│   │   │   └── index.ts
+│   │   ├── middlewares
+│   │   │   ├── error-handler.middleware.ts
+│   │   │   ├── index.ts
+│   │   │   └── route-not-found.middleware.ts
+│   │   ├── modules
+│   │   │   ├── corn
+│   │   │   └── index.ts
+│   │   ├── types
+│   │   │   ├── error.ts
+│   │   │   ├── index.ts
+│   │   │   └── routes.ts
+│   │   └── utils
+│   │       ├── error.ts
+│   │       ├── helpers.ts
+│   │       ├── index.ts
+│   │       ├── number.ts
+│   │       ├── object.ts
+│   │       ├── response.ts
+│   │       ├── routes.ts
+│   │       ├── string.ts
+│   │       └── time.ts
+│   ├── tsconfig.json
+│   └── tsconfig.prod.json
+├── frontend
+│   ├── README.md
+│   ├── commitlint.config.ts
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── lint-staged.config.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── corn.webp
+│   │   └── favicon.svg
+│   ├── src
+│   │   ├── api
+│   │   │   └── corn
+│   │   ├── assets
+│   │   │   ├── avatar.webp
+│   │   │   ├── corn.webp
+│   │   │   ├── logo.webp
+│   │   │   └── react.svg
+│   │   ├── components
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── Notification
+│   │   │   ├── Purchase
+│   │   │   └── ui
+│   │   ├── constants
+│   │   │   ├── axios.ts
+│   │   │   ├── defaults.ts
+│   │   │   ├── environment.ts
+│   │   │   ├── error.ts
+│   │   │   └── index.ts
+│   │   ├── hooks
+│   │   │   └── corn.ts
+│   │   ├── index.css
+│   │   ├── layouts
+│   │   │   └── Layout.tsx
+│   │   ├── main.tsx
+│   │   ├── pages
+│   │   │   ├── Home.tsx
+│   │   │   └── NotFound.tsx
+│   │   ├── routes
+│   │   │   └── index.tsx
+│   │   └── types
+│   │       ├── error.ts
+│   │       ├── index.ts
+│   │       └── models
+│   ├── tsconfig.json
+│   ├── tsconfig.tsbuildinfo
+│   └── vite.config.ts
+└── tree.txt
+
+28 directories, 69 files
 ```
 
 ---
 
-## ✅ Notas
+## Notas
 
 * Asegúrate de correr los comandos **dentro de cada carpeta** (`backend` o `frontend`).
 * Usa **pnpm** en lugar de `npm` o `yarn` para evitar conflictos de dependencias.
