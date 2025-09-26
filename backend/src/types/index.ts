@@ -14,8 +14,4 @@ export type AnyObject<Key extends string | number | symbol = string, Value = unk
 
 export type StringObject = AnyObject<string, string>
 
-export type ID = number | string
-
 export type KeyMapper<T> = (value: T, key: string, object: Record<string, T>) => string
-
-export type DeployStage = 'local' | 'development' | 'uat' | 'production'

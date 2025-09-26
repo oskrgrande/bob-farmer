@@ -29,7 +29,6 @@ export class Application {
   middlewares() {
     this.app.use(cors())
     this.app.use(compression())
-
     this.app.use(helmet())
     this.app.use(json({ limit: '20mb' })) // peso maximo del body
     this.app.use(urlencoded({ extended: false }))
@@ -37,9 +36,7 @@ export class Application {
 
   routes() {
     this.app.use(environment.baseApiPath, router)
-
     this.app.use(routeNotFound)
-
     this.app.use(handleError)
   }
 
